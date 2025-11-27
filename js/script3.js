@@ -14,7 +14,7 @@ console.log(firstPersonName);
 let oldest = people[0];
 if (people[1].age > people[0].age) {
     oldest = people[1];
-} else if (people[2].age < people[1].age) {
+} else if (people[2].age > people[1].age) {
     oldest = people[2];
 }
 
