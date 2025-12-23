@@ -1,5 +1,5 @@
 ### Homework #10
 
-Write your own implementation of the bind, call, aplly function
+Write your own implementation of the `bind`, `call`, `apply` function
 
-- When implementing a function, it is forbidden to use the bind, call, aplly methods
+- When implementing a function, it is forbidden to use the `bind`, `call`, `apply` methods
