@@ -15,12 +15,20 @@
  * myApply(sum, obj, [1, 2, 3]); // вернёт 16
  */
 const myApply = (fn, context, array) => {
+    if (typeof fn !== 'function') return `Not A function`;
     context = context ?? globalThis;
-
     context.tempFn = fn;
-    const result = context.tempFn(...array);
-    delete context.tempFn;
 
+    let result;
+    if (array === undefined) {
+        result = context.tempFn();
+    } else if (Array.isArray(array)) {
+        result = context.tempFn(...array);
+    } else {
+        return `Not a array`;
+    }
+
+    delete context.tempFn;
     return result;
 }
 
