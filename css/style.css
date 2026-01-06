@@ -10,3 +10,26 @@ body {
     margin: 0 auto;
     padding: 0 15px;
 }
+
+.cards {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 50px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    background-color: #d9e3ff;
+    border-radius: 4px;
+    padding: 10px;
+    width: 250px;
+}
+
+.card__long {
+    display: none;
+}
+
+.card.expanded .card__long {
+    display: block;
+}
