@@ -10,3 +10,66 @@ body {
     margin: 0 auto;
     padding: 0 15px;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.app {
+    width: 300px;
+    margin: 40px auto;
+}
+
+.controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.input {
+    flex: 1;
+    padding: 6px;
+}
+
+.add-btn {
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 6px;
+
+    cursor: pointer;
+}
+
+.list-item.selected {
+    background-color: #dbeafe;
+}
+
+.remove-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #888;
+}
+
+.remove-btn:hover {
+    color: red;
+}
