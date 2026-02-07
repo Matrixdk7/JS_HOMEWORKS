@@ -54,7 +54,7 @@ class Student {
     }
 
     mark(value) {
-        if (value >= 0 && value <= 10) {
+        if (value >= 0 && value <= 100) {
             this.estimates.push(value);
         }
     }
@@ -84,9 +84,9 @@ class Student {
         const avgMark = this.getAverageMark();
         const avgAttend = this.getAverageAttendance();
 
-        if (avgMark > 9 && avgAttend > 0.9) {
+        if (avgMark > 90 && avgAttend > 0.9) {
             return 'Молодець!';
-        } else if (avgMark > 9 || avgAttend > 0.9) {
+        } else if (avgMark > 90 || avgAttend > 0.9) {
             return 'Добре, але можна краще';
         } else {
             return 'Редиска!';
