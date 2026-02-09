@@ -1,16 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Homework</title>
+    <title>Profile model (getter / setter)</title>
+    
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+    />
+
+    <style>
+        .invalid {
+            border-color: #dc3545;
+        }
+    </style>
+    <script src="js/app.js" defer type="module"></script>
 </head>
-<body>
+<body class="bg-light">
 
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem dolore voluptas officiis porro molestiae sed, hic nihil! Incidunt, itaque neque?</p>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem dolore voluptas officiis porro molestiae sed, hic nihil! Incidunt, itaque neque?</p>
-<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem dolore voluptas officiis porro molestiae sed, hic nihil! Incidunt, itaque neque?</p>
+<div class="container py-5">
+    <div class="row g-4">
 
-<script src="./js/script.js"></script>
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Edit profile</h5>
+
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="firstName"
+                                placeholder="John"
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last name</label>
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="lastName"
+                                placeholder="Doe"
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                placeholder="john.doe@email.com"
+                        >
+                    </div>
+
+                    <!-- Errors -->
+                    <div
+                            id="errors"
+                            class="alert alert-danger d-none"
+                            role="alert"
+                    ></div>
+
+                    <div class="d-flex gap-2">
+                        <button
+                                id="saveBtn"
+                                class="btn btn-primary"
+                        >
+                            Save
+                        </button>
+
+                        <button
+                                id="freezeBtn"
+                                class="btn btn-outline-danger"
+                        >
+                            Freeze model
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Profile preview</h5>
+
+                    <div id="profileCard">
+                        <p class="text-muted mb-1">Full name:</p>
+                        <p class="fw-semibold" id="previewFullName">—</p>
+
+                        <p class="text-muted mb-1 mt-3">Email:</p>
+                        <p class="fw-semibold" id="previewEmail">—</p>
+
+                        <p class="text-muted mb-1 mt-3">Last updated:</p>
+                        <p class="fw-semibold" id="previewUpdatedAt">—</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="card-title mb-0">Model descriptors</h5>
+                        <button
+                                id="showDescriptorsBtn"
+                                class="btn btn-secondary btn-sm"
+                        >
+                            Show descriptors
+                        </button>
+                    </div>
+
+                    <pre
+                            id="descriptorsOutput"
+                            class="bg-dark text-light p-3 rounded d-none"
+                    ></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
