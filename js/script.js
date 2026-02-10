@@ -43,6 +43,11 @@ Object.defineProperties(user, {
 
         set(value) {
             const fullName = user.fullName;
+
+            if(typeof value !== 'string') {
+                throw new Error(`Must be a string`);
+            }
+
             const parts = value.trim().split(' ');
             console.log(parts);
 
