@@ -6,7 +6,6 @@ const albumSelect = document.getElementById('albumSelect');
 const loadBtn = document.getElementById('loadBtn');
 const status = document.getElementById('status');
 const photos = document.getElementById('photos');
-const loadMoreBtn = document.getElementById('loadMoreBtn');
 let allPhotos = [];
 let offset = 0;
 
@@ -23,7 +22,6 @@ userSelect.addEventListener('change', () => {
     photos.innerHTML = "";
     albumSelect.disabled = true;
     loadBtn.disabled = true;
-    loadMoreBtn.style.display = "none";
 
     loadAlbums(userId);
 })
@@ -38,10 +36,6 @@ albumSelect.addEventListener('change', () => {
 
 loadBtn.addEventListener('click', () => {
     loadPhotos(albumSelect.value)
-});
-
-loadMoreBtn.addEventListener('click', () => {
-    loadPhotoCards();
 });
 
 // Load Users
@@ -70,7 +64,9 @@ const loadUsers = () => {
             status.textContent = "Error: " + error.message;
         })
         .finally(() => {
-            status.textContent = "";
+            if (status.textContent === "Loading users...") {
+                status.textContent = "";
+            }
         });
 }
 
@@ -102,7 +98,9 @@ const loadAlbums = (userId) => {
             status.textContent = "Error: " + error.message;
         })
         .finally(() => {
-            status.textContent = "";
+            if (status.textContent === "Loading albums...") {
+                status.textContent = "";
+            }
         });
 }
 
@@ -126,7 +124,9 @@ const loadPhotos = (albumId) => {
             status.textContent = "Error: " + err.message;
         })
         .finally(() => {
-            status.textContent = "";
+            if (status.textContent === "Loading photos...") {
+                status.textContent = "";
+            }
         });
 }
 
@@ -153,9 +153,20 @@ const loadPhotoCards = () => {
     offset += 12;
 
     // Load more btn
-    if (offset < allPhotos.length) {
-        loadMoreBtn.style.display = "block";
-    } else {
-        loadMoreBtn.style.display = "none";
-    }
+    updateLoadMoreButton();
 }
+
+const updateLoadMoreButton = () => {
+    const oldBtn = document.getElementById('loadMoreBtn');
+    if (oldBtn) oldBtn.remove();
+
+    if (offset < allPhotos.length) {
+        const btn = document.createElement('button');
+        btn.id = "loadMoreBtn";
+        btn.textContent = "Load more";
+        btn.className = "btn btn-primary mt-3";
+        btn.addEventListener('click', loadPhotoCards);
+
+        photos.after(btn);
+    }
+};
