@@ -47,7 +47,8 @@ class UsersModel {
 
             const createdUser = await this._handleResponse(response);
 
-            createdUser.id = Date.now();
+            const maxId = this.users.length ? Math.max(...this.users.map(u => u.id)) : 0;
+            createdUser.id = maxId + 1;
             this.users.push(createdUser);
 
             return createdUser;
