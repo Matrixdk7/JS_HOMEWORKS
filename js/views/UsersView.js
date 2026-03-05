@@ -3,9 +3,11 @@ import createModal from "./modals/modalGenerator.js";
 class UsersView {
     constructor() {
         this.modals = {};
+        this.addUserBtn = document.getElementById("addUserBtn");
+        this.usersTable = document.getElementById("usersTableBody");
     }
 
-    #getCreateUserModal(user = {}) {
+    getCreateUserModal(user = {}) {
         const body = `
         <form id="userForm_createUser">
             <div class="mb-3">
@@ -37,7 +39,7 @@ class UsersView {
         return modal;
     }
 
-    #getEditUserModal(user) {
+    getEditUserModal(user) {
         const body = `
         <form id="userForm_editUser">
             <div class="mb-3">
@@ -65,11 +67,12 @@ class UsersView {
     `;
 
         const modal = createModal({ id: 'editUser', title: 'Edit User' }, body, footer);
+
         this.modals.editUser = modal;
         return modal;
     }
 
-    #getDeleteUserModal(user) {
+    getDeleteUserModal(user) {
         const body = `<p>Are you sure you want to delete <strong>${user.name}</strong>?</p>`;
         const footer = `
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
