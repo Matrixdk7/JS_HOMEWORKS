@@ -92,8 +92,9 @@ class UsersView {
     }
 
     renderList(users) {
-        const tbody = document.getElementById('usersTableBody');
+        const tbody = this.usersTable;
         tbody.innerHTML = '';
+        const fragment = document.createDocumentFragment();
 
         users.forEach(user => {
             const tr = document.createElement('tr');
@@ -107,11 +108,12 @@ class UsersView {
             <td class="text-end">
                 <button class="btn btn-sm btn-primary edit-btn" data-id="${user.id}">Edit</button>
                 <button class="btn btn-sm btn-danger delete-btn" data-id="${user.id}">Delete</button>
-            </td>
-        `;
+            </td>`;
 
-            tbody.appendChild(tr);
+            fragment.appendChild(tr);
         });
+
+        tbody.appendChild(fragment);
     }
 
     showLoading() {
@@ -155,6 +157,17 @@ class UsersView {
             phone: form.querySelector('input[name="phone"]').value.trim(),
             company: { name: form.querySelector('input[name="company"]').value.trim() }
         };
+    }
+
+    showError(message) {
+        const alert = document.createElement('div');
+
+        alert.className = 'alert alert-danger';
+        alert.textContent = message;
+
+        document.body.prepend(alert);
+
+        setTimeout(() => alert.remove(), 4000);
     }
 }
 

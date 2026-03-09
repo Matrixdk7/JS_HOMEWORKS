@@ -17,11 +17,14 @@ class UsersController {
 
     async loadUsers() {
         try {
+            this.#view.showLoading();
             const users = await this.#model.getAll();
             this.users = users;
             this.#view.renderList(users);
         } catch (err) {
             this.#view.showError(err.message);
+        } finally {
+            this.#view.hideLoading();
         }
     }
 
@@ -30,16 +33,41 @@ class UsersController {
         this.#view.showModal(modal);
 
         const saveBtn = modal._element.querySelector('[data-action="save"]');
+
         saveBtn.addEventListener('click', async () => {
             const form = modal._element.querySelector('form');
             if (!this.#view.validateUserForm(form)) return;
 
-            const data = this.#view.getFormData(form);
-            const newUser = await this.#model.create(data);
+            try {
+                this.#view.showLoading();
+                saveBtn.disabled = true;
 
-            this.#view.renderList(this.#model.users);
-            this.#view.hideModal(modal);
-        });
+                const data = this.#view.getFormData(form);
+                const newUser = await this.#model.create(data);
+                const tbody = this.#view.usersTable;
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                <td>${newUser.id}</td>
+                <td>${newUser.name}</td>
+                <td>${newUser.email}</td>
+                <td>${newUser.phone || '-'}</td>
+                <td>${newUser.company?.name || '-'}</td>
+                <td class="text-end">
+                    <button class="btn btn-sm btn-primary edit-btn" data-id="${newUser.id}">Edit</button>
+                    <button class="btn btn-sm btn-danger delete-btn" data-id="${newUser.id}">Delete</button>
+                </td>
+            `;
+                tbody.appendChild(tr);
+
+                this.#view.hideModal(modal);
+
+            } catch (err) {
+                this.#view.showError(err.message);
+            } finally {
+                this.#view.hideLoading();
+                saveBtn.disabled = false;
+            }
+        }, { once: true });
     }
 
     #controlUserBtn = (e) => {
@@ -61,16 +89,37 @@ class UsersController {
         this.#view.showModal(modal);
 
         const saveBtn = modal._element.querySelector('[data-action="save"]');
+
         saveBtn.addEventListener('click', async () => {
             const form = modal._element.querySelector('form');
             if (!this.#view.validateUserForm(form)) return;
 
-            const data = this.#view.getFormData(form);
-            const updatedUser = await this.#model.update(user.id, data);
+            try {
+                this.#view.showLoading();
 
-            this.#view.renderList(this.#model.users);
-            this.#view.hideModal(modal);
-        });
+                const data = this.#view.getFormData(form);
+                const updatedUser = await this.#model.update(user.id, data);
+
+                const row = this.#view.usersTable.querySelector(`button[data-id="${user.id}"]`).closest('tr');
+                row.innerHTML = `
+                <td>${updatedUser.id}</td>
+                <td>${updatedUser.name}</td>
+                <td>${updatedUser.email}</td>
+                <td>${updatedUser.phone || '-'}</td>
+                <td>${updatedUser.company?.name || '-'}</td>
+                <td class="text-end">
+                    <button class="btn btn-sm btn-primary edit-btn" data-id="${updatedUser.id}">Edit</button>
+                    <button class="btn btn-sm btn-danger delete-btn" data-id="${updatedUser.id}">Delete</button>
+                </td>`;
+                this.#view.hideModal(modal);
+
+            } catch (err) {
+                this.#view.showError(err.message);
+            } finally {
+                this.#view.hideLoading();
+            }
+
+        }, { once: true });
     }
 
     #handleDeleteUser = (user) => {
@@ -78,12 +127,24 @@ class UsersController {
         this.#view.showModal(modal);
 
         const confirmBtn = modal._element.querySelector('[data-confirm-btn]');
-        confirmBtn.addEventListener('click', async () => {
-            await this.#model.delete(user.id);
 
-            this.#view.renderList(this.#model.users);
-            this.#view.hideModal(modal);
-        });
+        confirmBtn.addEventListener('click', async () => {
+            try {
+                this.#view.showLoading();
+
+                await this.#model.delete(user.id);
+
+                const row = this.#view.usersTable.querySelector(`button[data-id="${user.id}"]`).closest('tr');
+                row.remove();
+
+                this.#view.hideModal(modal);
+
+            } catch (err) {
+                this.#view.showError(err.message);
+            } finally {
+                this.#view.hideLoading();
+            }
+        }, { once: true });
     }
 }
 
