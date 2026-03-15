@@ -1,10 +1,32 @@
 class UsersController {
     #model = null;
     #view = null;
+    sortAscending = true;
 
     constructor(model,view) {
         this.#model = model;
         this.#view = view;
+    }
+
+    #setupEventListeners() {
+        const nameHeader = document.getElementById('nameHeader');
+        nameHeader.addEventListener('click', () => {
+            this.sortUsersByName();
+        });
+    }
+
+    sortUsersByName() {
+        this.users.sort((a, b) => {
+            const nameA = a.name.toLowerCase();
+            const nameB = b.name.toLowerCase();
+
+            if (nameA < nameB) return this.sortAscending ? -1 : 1;
+            if (nameA > nameB) return this.sortAscending ? 1 : -1;
+            return 0;
+        });
+
+        this.sortAscending = !this.sortAscending;
+        this.#view.renderList(this.users);
     }
 
     async init() {
@@ -12,6 +34,7 @@ class UsersController {
             await this.loadUsers();
             this.#view.addUserBtn.addEventListener('click', this.#addUserBtn);
             this.#view.usersTable.addEventListener('click', this.#controlUserBtn);
+            this.#setupEventListeners();
         });
     }
 
@@ -60,6 +83,7 @@ class UsersController {
                 tbody.appendChild(tr);
 
                 this.#view.hideModal(modal);
+                this.#view.showSuccess('User added successfully!');
 
             } catch (err) {
                 this.#view.showError(err.message);
@@ -112,6 +136,7 @@ class UsersController {
                     <button class="btn btn-sm btn-danger delete-btn" data-id="${updatedUser.id}">Delete</button>
                 </td>`;
                 this.#view.hideModal(modal);
+                this.#view.showSuccess('User edit successfully!');
 
             } catch (err) {
                 this.#view.showError(err.message);
@@ -138,6 +163,7 @@ class UsersController {
                 row.remove();
 
                 this.#view.hideModal(modal);
+                this.#view.showSuccess('User delete successfully!');
 
             } catch (err) {
                 this.#view.showError(err.message);

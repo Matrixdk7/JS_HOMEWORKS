@@ -27,11 +27,6 @@ const createModal = ({title, id, cssClass}, body, footer) => {
         backdrop: 'static'
     };
 
-    wrapper.addEventListener('hidden.bs.modal', () => {
-        document.activeElement?.blur();
-        wrapper.remove();
-    });
-
     instances += 1;
     return new bootstrap.Modal(wrapper, bootstrapModalConfig);
 };

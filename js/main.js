@@ -6,4 +6,4 @@ const modelInstance = new UsersModel();
 const viewInstance = new UsersView();
 const controllerInstance = new UsersController(modelInstance, viewInstance);
 
-controllerInstance.init()
+controllerInstance.init();

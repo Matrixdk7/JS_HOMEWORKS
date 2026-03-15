@@ -1,10 +1,13 @@
 import createModal from "./modals/modalGenerator.js";
+import initToast from "./toasts/toastGenerator.js";
 
 class UsersView {
     constructor() {
         this.modals = {};
         this.addUserBtn = document.getElementById("addUserBtn");
         this.usersTable = document.getElementById("usersTableBody");
+        this.errorToast = initToast({ id: 'errorToast', title: 'Error', type: 'danger' });
+        this.successToast = initToast({ id: 'successToast', title: 'Success', type: 'success' });
     }
 
     getCreateUserModal(user = {}) {
@@ -160,14 +163,11 @@ class UsersView {
     }
 
     showError(message) {
-        const alert = document.createElement('div');
+        this.errorToast.show(message);
+    }
 
-        alert.className = 'alert alert-danger';
-        alert.textContent = message;
-
-        document.body.prepend(alert);
-
-        setTimeout(() => alert.remove(), 4000);
+    showSuccess(message) {
+        this.successToast.show(message);
     }
 }
 
