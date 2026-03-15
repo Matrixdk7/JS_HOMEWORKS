@@ -53,6 +53,8 @@ class UsersController {
 
     #addUserBtn = () => {
         const modal = this.#view.getCreateUserModal();
+        const triggerBtn = this.#view.addUserBtn;
+        this.#view.attachCancelHandler(modal, triggerBtn);
         this.#view.showModal(modal);
 
         const saveBtn = modal._element.querySelector('[data-action="save"]');
@@ -83,6 +85,7 @@ class UsersController {
                 tbody.appendChild(tr);
 
                 this.#view.hideModal(modal);
+                triggerBtn.focus();
                 this.#view.showSuccess('User added successfully!');
 
             } catch (err) {
@@ -102,14 +105,15 @@ class UsersController {
         const user = this.users.find(u => u.id == id);
 
         if (btn.classList.contains('edit-btn')) {
-            this.#handleEditUser(user);
+            this.#handleEditUser(user, btn);
         } else if (btn.classList.contains('delete-btn')) {
-            this.#handleDeleteUser(user);
+            this.#handleDeleteUser(user, btn);
         }
     }
 
-    #handleEditUser = (user) => {
+    #handleEditUser = (user, triggerBtn) => {
         const modal = this.#view.getEditUserModal(user);
+        this.#view.attachCancelHandler(modal, triggerBtn);
         this.#view.showModal(modal);
 
         const saveBtn = modal._element.querySelector('[data-action="save"]');
@@ -147,8 +151,9 @@ class UsersController {
         }, { once: true });
     }
 
-    #handleDeleteUser = (user) => {
+    #handleDeleteUser = (user, triggerBtn) => {
         const modal = this.#view.getDeleteUserModal(user);
+        this.#view.attachCancelHandler(modal, triggerBtn);
         this.#view.showModal(modal);
 
         const confirmBtn = modal._element.querySelector('[data-confirm-btn]');

@@ -33,7 +33,7 @@ class UsersView {
     `;
 
         const footer = `
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
         <button type="button" data-action="save" class="btn btn-primary">Save</button>
     `;
 
@@ -65,7 +65,7 @@ class UsersView {
     `;
 
         const footer = `
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
         <button type="button" data-action="save" class="btn btn-primary">Save</button>
     `;
 
@@ -78,12 +78,22 @@ class UsersView {
     getDeleteUserModal(user) {
         const body = `<p>Are you sure you want to delete <strong>${user.name}</strong>?</p>`;
         const footer = `
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
         <button type="button" class="btn btn-danger" data-confirm-btn>Confirm</button>
     `;
         const modal = createModal({ id: 'deleteUser', title: 'Delete User' }, body, footer);
         this.modals.deleteUser = modal;
         return modal;
+    }
+
+    attachCancelHandler(modal, triggerBtn) {
+        const cancelBtn = modal._element.querySelector('.cancel-btn');
+        if (!cancelBtn) return;
+
+        cancelBtn.addEventListener('click', () => {
+            modal.hide();
+            triggerBtn.focus();
+        }, { once: true });
     }
 
     showModal(modal) {
