@@ -1,0 +1,15 @@
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.form-row > .form-field {
+  flex: 1 1 48%;
+}

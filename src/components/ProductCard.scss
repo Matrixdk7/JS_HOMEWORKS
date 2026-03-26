@@ -1,0 +1,132 @@
+.product-card {
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .product-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .product-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .product-brand {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .product-description {
+      font-size: 0.85rem;
+      color: #333;
+      max-height: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product-prices {
+      display: flex;
+      gap: 8px;
+
+      .old-price {
+        color: #555;
+        text-decoration: line-through;
+        font-size: 0.9rem;
+      }
+
+      .discount-price {
+        color: red;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .price {
+        font-weight: bold;
+        color: #222;
+      }
+    }
+
+    .product-status {
+      display: flex;
+      gap: 5px;
+      margin-top: 5px;
+
+      .status {
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        color: #fff;
+
+        &.active {
+          background-color: green;
+        }
+        &.inactive {
+          background-color: gray;
+        }
+      }
+
+      .in-stock {
+        font-size: 0.75rem;
+        font-style: italic;
+        color: #007bff;
+      }
+
+      .on-main-page {
+        font-size: 0.75rem;
+        font-style: italic;
+        color: #e67e22;
+      }
+    }
+  }
+
+  .product-actions {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+
+    button {
+      flex: 1;
+      padding: 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    .delete-btn {
+      background-color: #e74c3c;
+      color: #fff;
+    }
+
+    .toggle-active-btn {
+      background-color: #3498db;
+      color: #fff;
+    }
+  }
+}
