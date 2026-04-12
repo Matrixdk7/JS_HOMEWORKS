@@ -1,16 +1,65 @@
-# React + Vite
+# Users Manager (React CRUD Application)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Тестове завдання на реалізацію CRUD-застосунку для управління списком користувачів з використанням відкритого API **JSONPlaceholder**.
 
-Currently, two official plugins are available:
+## 🚀 Технологічний стек
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **React** (Functional Components, Hooks)
+* **React Router** (Навігація та маршрутизація)
+* **Formik** (Робота з формами)
+* **Yup** (Валідація даних)
+* **React Bootstrap** (UI компоненти та стилізація)
+* **Prop-types** (Типізація пропсів)
+* **Axios / Fetch** (Взаємодія з API)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📋 Функціональні вимоги
 
-## Expanding the ESLint configuration
+### Основний функціонал:
+1.  **Перегляд списку:** Відображення всіх користувачів у вигляді таблиці або карток.
+2.  **Деталі користувача:** Окрема сторінка з повною інформацією про юзера (включаючи адресу та компанію).
+3.  **Створення:** Форма для додавання нового користувача (POST запит).
+4.  **Редагування:** Оновлення існуючих даних (PUT/PATCH запит).
+5.  **Видалення:** Видалення профілю з підтвердженням дії (DELETE запит).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+> **Примітка:** Оскільки JSONPlaceholder — це фейковий API, зміни не зберігаються на сервері перманентно, але система обробляє відповіді так, ніби запит успішний.
+
+---
+
+## 🗺️ Маршрутизація
+
+| Шлях | Опис сторінки |
+| :--- | :--- |
+| `/` | Редирект на `/users` |
+| `/users` | Список усіх користувачів |
+| `/users/:id` | Детальна інформація про користувача |
+| `/users/create` | Форма створення нового користувача |
+| `/users/:id/edit` | Форма редагування даних |
+| `*` | Сторінка 404 (Not Found) |
+
+---
+
+## 🛠️ Валідація (Yup Schema)
+
+Всі поля є обов'язковими для заповнення:
+- **Name:** мінімум 2 символи.
+- **Email:** перевірка на валідність формату.
+- **Username, Phone, Website, City, Street, Company Name:** обов'язкові поля.
+
+---
+
+## 🏗️ Структура проєкту
+
+Проєкт має модульну структуру для полегшення підтримки коду:
+
+```text
+src/
+  ├── api/             # Логіка запитів (axios/fetch інстанси)
+  ├── components/      # Перевикористовувані компоненти (Form, Loader, Table)
+  ├── pages/           # Сторінки-контейнери для маршрутів
+  ├── routes/          # Конфігурація React Router
+  ├── validation/      # Схеми валідації Yup
+  ├── hooks/           # Кастомні хуки (для Middle/Advanced рівня)
+  ├── App.jsx          # Головний компонент з Layout
+  └── main.jsx         # Точка входу
