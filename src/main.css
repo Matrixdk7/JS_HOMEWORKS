@@ -1,0 +1,11 @@
+body {
+  background-color: #18191c;
+  color: #f8f9fa;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.card {
+  background-color: #212529;
+  color: #f8f9fa;
+}

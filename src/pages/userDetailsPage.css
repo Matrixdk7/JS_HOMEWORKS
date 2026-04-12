@@ -1,0 +1,109 @@
+/* User card */
+.ud-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #212529;
+    color: #f8f9fa;
+    border: 0;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Card hover effect for subtle dynamics */
+.ud-card:hover {
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+/* Header with avatar */
+.ud-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Avatar */
+.ud-avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #495057;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Avatar animates on card hover */
+.ud-card:hover .ud-avatar {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.ud-name {
+    margin: 0;
+}
+
+/* Sections with a subtle background */
+.ud-section {
+    background-color: #2a2e33;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    transition: background-color 0.2s;
+}
+
+/* Section hover effect */
+.ud-section:hover {
+    background-color: #343a40;
+}
+
+/* Section titles with underline */
+.ud-section-title {
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #495057;
+    padding-bottom: 0.25rem;
+}
+
+/* Links inside sections */
+.ud-section a {
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
+}
+
+.ud-section a:hover {
+    text-decoration: underline;
+    color: #0dcaf0;
+    transform: scale(1.05);
+}
+
+/* Name wrapper */
+.ud-name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Edit button */
+.ud-edit-btn {
+    color: #adb5bd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.3rem;
+    border-radius: 0.375rem;
+
+    transition: all 0.2s ease;
+}
+
+/* Hover */
+.ud-edit-btn:hover {
+    color: #0dcaf0;
+    background-color: rgba(255,255,255,0.05);
+}

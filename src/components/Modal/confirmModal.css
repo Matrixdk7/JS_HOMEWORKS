@@ -1,0 +1,61 @@
+/* General dialog style */
+.confirm-modal-dialog .modal-content {
+    background-color: #212529;
+    color: #f8f9fa;
+    border-radius: 0.75rem;
+    border: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+    /* Appearance animation */
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+/* When modal is shown */
+.modal.show .confirm-modal-dialog .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Header */
+.confirm-modal-header {
+    border-bottom: 1px solid #495057;
+}
+
+/* Body */
+.confirm-modal-body {
+    font-size: 0.95rem;
+}
+
+/* Footer */
+.confirm-modal-footer {
+    border-top: 1px solid #495057;
+}
+
+/* Buttons */
+.confirm-btn {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Button hover */
+.confirm-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+/* Button colors */
+.cancel-btn {
+    background-color: #495057;
+    border: 0;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    border: 0;
+}
+
+/* Delete hover */
+.delete-btn:hover:not(:disabled) {
+    background-color: #c82333;
+}
