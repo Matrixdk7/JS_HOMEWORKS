@@ -1,0 +1,152 @@
+.header {
+    width: 100%;
+}
+
+.container {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 24px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* BANNER */
+.banner {
+    width: 100%;
+    background: black;
+    color: white;
+}
+
+.bannerInner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.bannerLink {
+    color: white;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.nav {
+    display: flex;
+    gap: 24px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: black;
+}
+
+/* SEARCH */
+.search {
+    flex: 1;
+    max-width: 577px;
+    height: 48px;
+    background: #f0f0f0;
+    border-radius: 62px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+}
+
+.search input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+}
+
+/* RIGHT */
+.right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* BURGER */
+.burger {
+    display: none;
+    background: none;
+    border: none;
+}
+
+/* MOBILE MENU */
+.mobileMenu {
+    display: none;
+}
+
+.mobileSearchIcon {
+    display: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 390px) {
+    .container {
+        max-width: 358px;
+        padding: 16px 20px;
+        height: 24px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .mobileMenu {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 20px;
+    }
+
+    .right svg:first-child {
+        display: block;
+    }
+
+    .desktopNav {
+        display: none;
+    }
+
+    .search {
+        display: none;
+    }
+
+    .mobileSearchIcon {
+        display: block;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .mobileNav {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}

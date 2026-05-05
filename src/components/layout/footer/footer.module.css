@@ -1,0 +1,150 @@
+.footer {
+    width: 100%;
+    background: #f5f5f5;
+    margin-top: 80px;
+}
+
+/* MAIN CONTAINER */
+.container {
+    max-width: 1270px;
+    margin: 0 auto;
+    padding: 140px 15px 60px 15px;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+/* BRAND */
+.brand {
+    max-width: 300px;
+}
+
+.brand h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.brand p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* SOCIALS */
+.socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.socials a:hover {
+    background: #eaeaea;
+}
+
+/* COLUMN */
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.column h4 {
+    margin-bottom: 10px;
+}
+
+.column a {
+    font-size: 14px;
+    color: #555;
+}
+
+/* BOTTOM */
+.bottom {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copy {
+    font-size: 13px;
+    color: #777;
+}
+
+.payments {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.iconBox {
+    width: 36px;
+    height: 24px;
+    background: #fff;
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payments svg {
+    font-size: 22px;
+}
+
+/*.payments svg:nth-child(1) { color: #1a1f71; } !* Visa *!*/
+/*.payments svg:nth-child(2) { color: #eb001b; } !* Mastercard *!*/
+/*.payments svg:nth-child(3) { color: #003087; } !* PayPal *!*/
+/*.payments svg:nth-child(4) { color: #000; }     !* Apple *!*/
+/*.payments svg:nth-child(5) { color: #4285f4; } !* Google *!*/
+
+/* MOBILE */
+@media (max-width: 390px) {
+
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        padding: 40px 20px;
+    }
+
+    .column {
+        gap: 8px;
+    }
+
+    .column h4 {
+        margin-bottom: 6px;
+    }
+
+    .brand {
+        max-width: 100%;
+        grid-column: span 2;
+    }
+
+    .socials {
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    .bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .payments {
+        justify-content: center;
+    }
+}

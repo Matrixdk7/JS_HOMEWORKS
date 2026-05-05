@@ -1,0 +1,42 @@
+.newsletter {
+    background: black;
+    color: white;
+    border-radius: 16px;
+    /*padding: 40px;*/
+    max-width: 1240px;
+    position: relative;
+    top: 60px;
+    transform: translateY(125px);
+}
+
+.newsletter-content {
+    padding: 36px 64px;
+    display: flex;
+    flex-direction: initial;
+    justify-content: space-between;
+}
+
+.newsletter-text {
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+@media (max-width: 390px) {
+    .newsletter {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+        top: 40px;
+    }
+
+    .newsletter-content {
+        flex-direction: column;
+    }
+
+    .form {
+        max-width: 350px;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
