@@ -7,7 +7,7 @@ export const apiSlice = createApi({
     }),
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: ({ limit = 9, skip = 0 }) =>
+            query: ({ limit = 9, skip = 0 } = {}) =>
                 `products?limit=${limit}&skip=${skip}`,
         }),
 
@@ -22,6 +22,10 @@ export const apiSlice = createApi({
         searchProducts: builder.query({
             query: (searchTerm) => `products/search?q=${searchTerm}`,
         }),
+        getProductsByCategory: builder.query({
+            query: ({ category, limit = 9, skip = 0 }) =>
+                `products/category/${category}?limit=${limit}&skip=${skip}`,
+        }),
     }),
 })
 
@@ -30,4 +34,5 @@ export const {
     useGetProductByIdQuery,
     useGetCategoriesQuery,
     useSearchProductsQuery,
+    useGetProductsByCategoryQuery,
 } = apiSlice

@@ -1,0 +1,35 @@
+.product-color-swatch {
+    width: 37px;
+    height: 37px;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease;
+}
+
+.product-color-swatch:hover {
+    transform: scale(1.05);
+}
+
+.product-color-swatch--active {
+    border-color: #000;
+}
+
+.product-review-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 24px;
+}
+
+.product-review-date {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.product-gallery-thumb {
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.product-gallery-thumb.active {
+    border-color: #111827;
+}
