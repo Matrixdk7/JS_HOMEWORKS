@@ -17,9 +17,7 @@ function CategoryFilter({ categories = [], selectedCategory, onChange, }) {
                             key={category.slug || category}
                             onClick={() => onChange(name)}
                             className={`flex w-full items-center justify-between text-sm transition-colors ${
-                                active
-                                    ? 'font-medium text-black'
-                                    : 'text-gray-500 hover:text-black'
+                                active ? 'font-medium text-black' : 'text-gray-500 hover:text-black'
                             }`}
                         >
                             <span>{name}</span>

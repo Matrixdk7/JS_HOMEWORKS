@@ -2,16 +2,26 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import styles from "./header.module.css"
 import { Menu, Search, ShoppingCart, User } from "lucide-react"
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../../../features/auth/authSlice.js'
+import { LogOut } from 'lucide-react'
 
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+    const user = useSelector((state) => state.auth.user)
+
+    const dispatch = useDispatch()
+
+    const handleLogout = () => {
+        dispatch(logout())
+    }
 
     return (
         <header className={styles.header}>
             <div className={styles.container}>
                 <div className={styles.left}>
 
-                    {/* mobile burger */}
                     <button
                         className={styles.burger}
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -31,7 +41,6 @@ export default function Header() {
                     </nav>
                 </div>
 
-                {/* SEARCH */}
                 <div className={styles.search}>
                     <Search size={20} />
                     <input placeholder="Search for products..." />
@@ -46,13 +55,22 @@ export default function Header() {
                         <ShoppingCart size={24} />
                     </Link>
 
-                    <Link to="/account">
-                        <User size={24} />
-                    </Link>
+                    {user ? (
+                        <button
+                            onClick={handleLogout}
+                            className={styles.logoutBtn}
+                        >
+                            <span>{user.firstName}</span>
+                            <LogOut size={20} />
+                        </button>
+                    ) : (
+                        <Link to="/login">
+                            <User size={24} />
+                        </Link>
+                    )}
                 </div>
             </div>
 
-            {/* MOBILE MENU */}
             {mobileMenuOpen && (
                 <nav className={styles.mobileNav}>
                     <Link to="/category">Shop</Link>

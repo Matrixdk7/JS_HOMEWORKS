@@ -96,31 +96,43 @@ const CategoryPage = () => {
                 Home <span className="mx-2">›</span> {selectedCategory || 'Casual'}
             </div>
 
-            <h1 className="mb-6 text-[32px] font-bold">
-                {selectedCategory || 'Casual'}
-            </h1>
+            {/*<h1 className="mb-6 text-[32px] font-bold">*/}
+            {/*    {selectedCategory || 'Casual'}*/}
+            {/*</h1>*/}
 
-            <div className="flex gap-8">
-                <aside className="aside w-[295px] shrink-0 rounded-[20px] border border-gray-200 bg-white p-6">
+            <div className="flex gap-5">
+                <aside className="aside w-[295px] shrink-0 self-start h-fit rounded-[20px] border border-gray-200 bg-white p-6">
                     <div className="mb-2 flex items-center justify-between border-b pb-4">
                         <h3 className="text-[20px] font-bold text-black">Filters</h3>
                     </div>
 
-                    <div className="flex flex-col gap-6">
-                        <CategoryFilter
-                            categories={categories}
-                            selectedCategory={selectedCategory}
-                            onChange={setSelectedCategory}
-                        />
+                    <div className="flex flex-col">
+                        <div className="pb-6">
+                            <CategoryFilter
+                                categories={categories}
+                                selectedCategory={selectedCategory}
+                                onChange={setSelectedCategory}
+                            />
+                        </div>
 
-                        <PriceFilter
-                            priceRange={priceRange}
-                            onChange={setPriceRange}
-                        />
+                        <div className="border-t border-border py-6">
+                            <PriceFilter
+                                priceRange={priceRange}
+                                onChange={setPriceRange}
+                            />
+                        </div>
 
-                        <ColorFilter />
-                        <SizeFilter />
-                        <StyleFilter />
+                        <div className="border-t border-border py-6">
+                            <ColorFilter />
+                        </div>
+
+                        <div className="border-t border-border py-6">
+                            <SizeFilter />
+                        </div>
+
+                        <div className="border-t border-border pt-6">
+                            <StyleFilter />
+                        </div>
                     </div>
 
                     <button
@@ -133,6 +145,9 @@ const CategoryPage = () => {
                 </aside>
 
                 <section className="flex-1">
+                    <h1 className="mb-6 text-[32px] font-bold">
+                        {selectedCategory || 'Casual'}
+                    </h1>
                     <div className="mb-7 flex items-center justify-between">
                         <p className="text-sm text-gray-500">
                             Showing {skip + 1}-{Math.min(skip + limit, total)} of {total} products
@@ -154,7 +169,7 @@ const CategoryPage = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-x-5 gap-y-10">
+                    <div className="grid grid-cols-3 gap-x-5 gap-y-9">
                         {sortedProducts.map((product) => (
                             <ProductCard
                                 key={product.id}

@@ -5,10 +5,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-* {
+html, body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, bar, blockquote, dl, dd {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html, body {
@@ -158,6 +157,27 @@ ul {
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
+}
+
+.product-card-title {
+    padding-top: 16px;
+}
+
+.product-color-swatch {
+    width: 37px;
+    height: 37px;
+    border-radius: 9999px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.product-color-swatch svg {
+    width: 14px;
+    height: 14px;
 }
 
 @layer base {

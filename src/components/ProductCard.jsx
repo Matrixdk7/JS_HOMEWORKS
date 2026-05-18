@@ -20,7 +20,7 @@ function ProductCard({ product }) {
                 />
             </div>
 
-            <h3 className="mt-3 line-clamp-1 text-[16px] font-semibold text-black">
+            <h3 className="mt-3 line-clamp-1 text-[16px] font-semibold text-black product-card-title">
                 {product.title}
             </h3>
 

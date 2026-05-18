@@ -1,5 +1,6 @@
 import FilterSection from './FilterSection'
 import ColorSwatches from '../ui/ColorSwatches'
+import {useState} from "react";
 
 const colors = [
     '#000000',
@@ -15,12 +16,16 @@ const colors = [
 ]
 
 function ColorFilter() {
+    const [selectedColor, setSelectedColor] = useState('')
+
     return (
         <FilterSection
             title="Colors"
             value="colors"
         >
-            <ColorSwatches options={colors} />
+            <ColorSwatches options={colors}
+                           selected={selectedColor}
+                           onChange={setSelectedColor} />
         </FilterSection>
     )
 }

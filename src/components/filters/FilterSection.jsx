@@ -15,7 +15,7 @@ function FilterSection({ title, value, children }) {
                     </AccordionTrigger>
 
                     <AccordionContent>
-                        <div className="pb-5 pt-1">
+                        <div className="pt-1">
                             {children}
                         </div>
                     </AccordionContent>

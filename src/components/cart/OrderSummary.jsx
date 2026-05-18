@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { Button } from '@/components/ui/button'
+import { Link } from 'react-router-dom'
 
 const OrderSummary = () => {
 
@@ -82,9 +83,11 @@ const OrderSummary = () => {
 
             </div>
 
-            <Button className="w-full rounded-full h-14 text-lg">
-                Go to Checkout
-            </Button>
+            <Link to="/checkout">
+                <Button className="w-full rounded-full h-14 text-lg">
+                    Go to Checkout
+                </Button>
+            </Link>
 
         </div>
     )
