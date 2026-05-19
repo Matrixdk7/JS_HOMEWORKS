@@ -6,6 +6,14 @@
     transition: transform 0.2s ease;
 }
 
+.product-container {
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .product-color-swatch:hover {
     transform: scale(1.05);
 }

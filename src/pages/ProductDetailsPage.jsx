@@ -54,7 +54,7 @@ function ProductDetailsPage() {
             : [product.thumbnail]
 
     return (
-        <section className="py-8">
+        <section className="py-8 product-container">
             <Breadcrumbs
                 items={[
                     { label: 'Home', href: '/' },
