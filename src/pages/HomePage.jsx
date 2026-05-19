@@ -41,11 +41,20 @@ const HomePage = () => {
             <BrandsSection />
 
             <div className="mx-auto max-w-[1240px] px-4">
-                <ProductSection title="New Arrivals" products={newArrivals} />
-                <ProductSection title="Top Selling" products={topSelling} />
+                <ProductSection
+                    title="New Arrivals"
+                    products={newArrivals}
+                />
+
+                <ProductSection
+                    title="Top Selling"
+                    products={topSelling}
+                />
+
                 <CategorySection categories={categories} />
-                <HomeReviews reviews={reviews} />
             </div>
+
+            <HomeReviews reviews={reviews} />
         </>
     )
 }

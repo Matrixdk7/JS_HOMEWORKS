@@ -1,5 +1,6 @@
 import FilterSection from './FilterSection'
 import OptionPills from '../ui/OptionPills'
+import {useState} from "react";
 
 const sizes = [
     'XX-Small',
@@ -14,12 +15,16 @@ const sizes = [
 ]
 
 function SizeFilter() {
+    const [selectedSize, setSelectedSize] = useState('')
+
     return (
         <FilterSection
             title="Size"
             value="size"
         >
-            <OptionPills options={sizes} />
+            <OptionPills options={sizes}
+                         selected={selectedSize}
+                         onChange={setSelectedSize} />
         </FilterSection>
     )
 }

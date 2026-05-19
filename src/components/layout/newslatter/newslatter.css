@@ -9,6 +9,14 @@
     transform: translateY(125px);
 }
 
+.newsletter-container {
+    max-width: 1270px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .newsletter-content {
     padding: 36px 64px;
     display: flex;

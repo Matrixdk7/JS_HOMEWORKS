@@ -2,7 +2,7 @@ import "./newslatter.css"
 
 export default function Newsletter() {
     return (
-        <section className="newsletter container">
+        <section className="newsletter newsletter-container">
             <div className="newsletter-content">
                 <h2 className="newsletter-text">STAY UP TO DATE ABOUT OUR LATEST OFFERS</h2>
 

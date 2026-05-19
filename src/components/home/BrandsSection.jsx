@@ -1,9 +1,15 @@
+import versace from '@/assets/brands/versace.svg'
+import kelvin from '@/assets/brands/kelvin.svg'
+import gucci from '@/assets/brands/gucci.svg'
+import prada from '@/assets/brands/prada.svg'
+import zara from '@/assets/brands/zara.svg'
+
 const brands = [
-    'VERSACE',
-    'ZARA',
-    'GUCCI',
-    'PRADA',
-    'Calvin Klein',
+    { name: 'Versace', logo: versace },
+    { name: 'Zara', logo: zara },
+    { name: 'Gucci', logo: gucci },
+    { name: 'Prada', logo: prada },
+    { name: 'Kelvin Klein', logo: kelvin },
 ]
 
 const BrandsSection = () => {
@@ -11,12 +17,12 @@ const BrandsSection = () => {
         <section className="w-full bg-black">
             <div className="mx-auto flex h-[122px] max-w-[1240px] items-center justify-between px-4">
                 {brands.map((brand) => (
-                    <span
-                        key={brand}
-                        className="text-2xl font-semibold tracking-wide text-white"
-                    >
-                        {brand}
-                    </span>
+                    <img
+                        key={brand.name}
+                        src={brand.logo}
+                        alt={brand.name}
+                        className="h-8 w-auto object-contain"
+                    />
                 ))}
             </div>
         </section>
